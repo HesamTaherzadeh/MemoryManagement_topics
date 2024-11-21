@@ -1,3 +1,5 @@
+![CI](https://github.com/HesamTaherzadeh/MemoryManagement_topics/actions/workflows/ci.yml/badge.svg)
+
 # Advanced Memory Management in C++
 
 This repository explores advanced topics in memory management in C++. Each example demonstrates best practices and techniques for managing memory efficiently and avoiding common pitfalls such as memory leaks and undefined behavior.

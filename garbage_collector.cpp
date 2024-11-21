@@ -33,10 +33,9 @@ private:
     bool marked;
 };
 
-// Define Frame, Map, and Keypoint classes inheriting from CollectableObject
 class Keypoint : public CollectableObject {
 public:
-    Keypoint(int id) : id(id) {}
+    explicit Keypoint(int id) : id(id) {}
     ~Keypoint() {
         std::cout << "Destroying Keypoint " << id << std::endl;
     }
@@ -47,7 +46,7 @@ private:
 
 class Frame : public CollectableObject {
 public:
-    Frame(int id) : id(id) {}
+    explicit Frame(int id) : id(id) {}
     ~Frame() {
         std::cout << "Destroying Frame " << id << std::endl;
     }
@@ -58,7 +57,7 @@ private:
 
 class Map : public CollectableObject {
 public:
-    Map(int id) : id(id) {}
+    explicit Map(int id) : id(id) {}
     ~Map() {
         std::cout << "Destroying Map " << id << std::endl;
     }
@@ -117,11 +116,13 @@ int main(int argc, char** argv) {
     GarbageCollector gc;
 
     Map* map = new Map(1);
+    Map* map2 = new Map(2);
     Frame* frame = new Frame(1);
     Keypoint* keypoint1 = new Keypoint(1);
     Keypoint* keypoint2 = new Keypoint(2);
 
     gc.addObj(map);
+    gc.addObj(map2);
     gc.addObj(frame);
     gc.addObj(keypoint1);
     gc.addObj(keypoint2);
@@ -132,6 +133,7 @@ int main(int argc, char** argv) {
     gc.addRefrences(frame, keypoint2); 
 
     gc.markObj(map);
+    gc.markObj(map2);
 
     std::cout << "Running Garbage Collector..." << std::endl;
     gc.sweep();
