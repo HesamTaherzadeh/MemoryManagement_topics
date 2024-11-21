@@ -34,7 +34,7 @@ jobs:
     - name: Run executables
       run: |
         for exe in build/*; do
-          if [[ -x "$exe" ]]; then
+          if [[ -x "$exe" && ! -d "$exe" ]]; then
             echo "Running $exe:"
             $exe
           fi
