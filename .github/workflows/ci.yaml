@@ -17,14 +17,10 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Set up C++ environment
-      uses: actions/setup-cpp@v1
-      with:
-        compiler: g++ 
-        run-version-check: true 
-
     - name: Install dependencies
-      run: sudo apt-get update && sudo apt-get install -y cmake build-essential
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y cmake g++ build-essential
 
     - name: Create build directory
       run: mkdir build
