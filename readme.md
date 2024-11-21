@@ -1,4 +1,4 @@
-![CI](https://github.com/HesamTaherzadeh/MemoryManagement_topics/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/HesamTaherzadeh/MemoryManagement_topics/actions/workflows/ci.yaml/badge.svg)
 
 # Advanced Memory Management in C++
 
