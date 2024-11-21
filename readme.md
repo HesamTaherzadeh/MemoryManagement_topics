@@ -14,6 +14,7 @@ The repository covers concepts such as smart pointers, custom deleters, avoiding
 2. [Examples](#examples)
    - [1. Custom Deleters with `std::unique_ptr`](#1-custom-deleters-with-stdunique_ptr)
    - [2. Avoiding Circular References with `std::weak_ptr`](#2-avoiding-circular-references-with-stdweak_ptr)
+   - [3. Garbage Collection with Mark-and-Sweep](#3-garbage-collection-with-mark-and-sweep)
 3. [Upcoming Topics](#upcoming-topics)
 
 ---
@@ -56,13 +57,34 @@ See the code in [`circular_references.cpp`](./circular_references.cpp).
 
 ---
 
+### 3. Garbage Collection with Mark-and-Sweep
+
+#### Description
+
+This example demonstrates how to implement a basic garbage collection mechanism in C++ using the **mark-and-sweep** technique. The example introduces a `GarbageCollector` class that:
+- Tracks dynamically allocated objects.
+- Uses a **mark phase** to identify reachable objects.
+- Performs a **sweep phase** to deallocate unreachable objects.
+
+This approach helps manage complex memory relationships, such as cyclic references, which are not handled by traditional smart pointers.
+
+#### Features
+- **Mark-and-Sweep Algorithm**: Identifies and removes unreachable objects.
+- **Object Management**: Tracks `Map`, `Frame`, and `Keypoint` objects, simulating a real-world scenario with hierarchical relationships.
+- **Automatic Cleanup**: Demonstrates safe memory deallocation in a controlled environment.
+
+#### Reference
+
+See the code in [`garbage_collector.cpp`](./garbage_collector.cpp).
+
+---
+
 ## Upcoming Topics
 
 Here are some topics planned for future updates to this repository:
 - **Custom Memory Allocators**: Implementing custom memory allocation strategies for performance-critical applications.
 - **Pool Allocators**: Managing objects in pools for frequent allocations and deallocations.
 - **RAII (Resource Acquisition Is Initialization)**: Best practices for resource management using RAII patterns.
-- **Garbage Collection Techniques**: Simulating garbage collection in C++ for complex memory management scenarios.
 - **Analyzing Memory Usage**: Tools and techniques for profiling and debugging memory usage in C++ applications.
 - **Thread-Safe Memory Management**: Strategies for managing memory safely in multithreaded applications.
 
