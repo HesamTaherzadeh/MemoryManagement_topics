@@ -5,11 +5,10 @@ project(C++)
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Get all .cpp files in the current directory
-file(GLOB CPP_FILES "*.cpp")
+ file(GLOB CPP_FILES "*.cpp")
 
-# Debug: Show found .cpp files
-message(STATUS "Found source files: ${CPP_FILES}")
+ message(STATUS "Found source files: ${CPP_FILES}")
+find_package(Boost REQUIRED)
 
 # Loop through each .cpp file
 foreach(CPP_FILE ${CPP_FILES})
@@ -21,4 +20,5 @@ foreach(CPP_FILE ${CPP_FILES})
 
     # Add executable for each .cpp file
     add_executable(${EXECUTABLE_NAME} ${CPP_FILE})
+    target_link_libraries(${EXECUTABLE_NAME} ${Boost_LIBRARIES})
 endforeach()

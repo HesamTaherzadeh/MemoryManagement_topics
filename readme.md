@@ -1,5 +1,3 @@
-![CI](https://github.com/HesamTaherzadeh/MemoryManagement_topics/actions/workflows/ci.yaml/badge.svg)
-
 # Advanced Memory Management in C++
 
 This repository explores advanced topics in memory management in C++. Each example demonstrates best practices and techniques for managing memory efficiently and avoiding common pitfalls such as memory leaks and undefined behavior.
@@ -15,6 +13,7 @@ The repository covers concepts such as smart pointers, custom deleters, avoiding
    - [1. Custom Deleters with `std::unique_ptr`](#1-custom-deleters-with-stdunique_ptr)
    - [2. Avoiding Circular References with `std::weak_ptr`](#2-avoiding-circular-references-with-stdweak_ptr)
    - [3. Garbage Collection with Mark-and-Sweep](#3-garbage-collection-with-mark-and-sweep)
+   - [4. Converting `std::shared_ptr` to `boost::shared_ptr`](#4-converting-stdshared_ptr-to-boostshared_ptr)
 3. [Upcoming Topics](#upcoming-topics)
 
 ---
@@ -79,6 +78,23 @@ See the code in [`garbage_collector.cpp`](./garbage_collector.cpp).
 
 ---
 
+### 4. Converting `std::shared_ptr` to `boost::shared_ptr`
+
+#### Description
+
+This example demonstrates how to safely convert a `std::shared_ptr` to a `boost::shared_ptr` without causing double deletion or undefined behavior. The conversion is achieved by using a custom deleter that ensures the `boost::shared_ptr` does not take ownership of the resource but instead defers to the `std::shared_ptr`.
+
+#### Explanation
+
+- **Custom Deleter**: The `boost::shared_ptr` is constructed with a custom deleter that calls `reset()` on the `std::shared_ptr`. This ensures that the `boost::shared_ptr` does not delete the underlying resource but instead relies on the `std::shared_ptr` to manage the lifetime of the object.
+- **Avoiding Double Deletion**: By using a custom deleter, the code avoids the issue of double deletion, which would occur if both `std::shared_ptr` and `boost::shared_ptr` tried to delete the same resource.
+
+#### Reference
+
+See the code in [`std_to_boost.cpp`](./std_to_boost.cpp).
+
+---
+
 ## Upcoming Topics
 
 Here are some topics planned for future updates to this repository:
@@ -95,3 +111,9 @@ Here are some topics planned for future updates to this repository:
 Contributions are welcome! If you have ideas for new topics or improvements, feel free to submit a pull request or open an issue.
 
 ---
+
+![CI](https://github.com/HesamTaherzadeh/MemoryManagement_topics/actions/workflows/ci.yaml/badge.svg)
+
+---
+
+This repository is maintained by [Hesam Taherzadeh](https://github.com/HesamTaherzadeh). Feel free to reach out with questions or suggestions!
