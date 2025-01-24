@@ -20,7 +20,7 @@ jobs:
     - name: Install dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y cmake g++ build-essential
+        sudo apt-get install -y cmake g++ build-essential libboost-all-dev
 
     - name: Create build directory
       run: mkdir build
